@@ -21,13 +21,13 @@
             <figure>
                 <img
                     src="{{asset("/images/alumnos.jpeg")}}"
-                    alt="Alumnos" />
+                    alt="imagen de cds" />
             </figure>
             <div class="card-body">
                 <h2 class="card-title">¡Artistas!</h2>
                 <p>Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales
                 <div class="card-actions justify-end">
-                    <a class="btn btn-primary" href="{{route("alumnos.index")}}">Ver alumnos</a>
+                    <a class="btn btn-primary" href="">Ver Albumes</a>
                 </div>
             </div>
         </div>

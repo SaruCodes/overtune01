@@ -1,7 +1,6 @@
 {{--Header para desktop--}}
-<header class="md:h-15v bg-header
-    flex flex-col md:flex-row justify-between px-3 items-center">
-    <img class="w-1 h-20 md:w-1/12 md:max-h-full mx-auto" src="{{ asset('images/logo.png') }}" alt="logo">
+<header class="md:h-15v bg-header flex flex-col md:flex-row justify-between px-3 items-center">
+    <img class="w-auto h-14 md:h-20 md:w-auto mx-auto object-contain" src="{{ asset('images/logo.png') }}" alt="logo">
 
     {{--Mobile--}}
     <div class="block md:hidden">
