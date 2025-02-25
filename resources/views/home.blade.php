@@ -16,20 +16,22 @@
             </div>
         </div
     @endguest
-    @auth
-        <div class=" p-4 card bg-base-100 image-full w-96 shadow-xl">
-            <figure>
-                <img
-                    src="{{asset("/images/alumnos.jpeg")}}"
-                    alt="imagen de cds" />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">¡Artistas!</h2>
-                <p>Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales
-                <div class="card-actions justify-end">
-                    <a class="btn btn-primary" href="">Ver Albumes</a>
+        @auth
+            <div class="card lg:card-side bg-base-100 shadow-xl">
+                <figure>
+                    <img
+                        src="{{asset('/images/cd.jpg')}}"
+                        alt="Album"
+                        class="w-60 h-60 object-cover"/>
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">New album is released!</h2>
+                    <p>Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales</p>
+                    <div class="card-actions justify-end">
+                        <a href="#" class="btn btn-outline btn-primary" href="{{route("discos.index")}}">Acceso al CRUD</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    @endauth
+        @endauth
+
 </x-layouts.layout>

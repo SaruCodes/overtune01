@@ -11,7 +11,7 @@
             <span class="text-white">{{ auth()->user()->name }}</span>
             <form action="{{ route('logout') }}" method="POST">
                 @csrf
-                <input class="btn btn-glass" type="submit" value="Logout">
+                <input class="btn btn-primary" type="submit" value="Logout">
             </form>
         @endauth
         @guest
