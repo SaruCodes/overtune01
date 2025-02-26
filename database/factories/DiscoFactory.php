@@ -26,7 +26,7 @@ class DiscoFactory extends Factory
     public function getTipo():string{
         //Elige aleatoriamente uno de los 3 tipos
         $tipos = ['EP', 'Single', 'Album'];
-        $numRandom = rand(1, 3);
+        $numRandom = rand(0, 2);
         return $tipos[$numRandom];
     }
 

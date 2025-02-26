@@ -28,7 +28,7 @@
                     <h2 class="card-title">New album is released!</h2>
                     <p>Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales</p>
                     <div class="card-actions justify-end">
-                        <a href="#" class="btn btn-outline btn-primary" href="{{route("discos.index")}}">Acceso al CRUD</a>
+                        <a class="btn btn-outline btn-primary" href="{{route("discos.index")}}">Acceso a gestión</a>
                     </div>
                 </div>
             </div>
