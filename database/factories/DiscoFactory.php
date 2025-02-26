@@ -17,7 +17,20 @@ class DiscoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'titulo' => $this->faker->unique()->sentence(3), //3 palabras aleatorias juntas
+            'tipo' => $this->getTipo(),
+            'año' => $this->getAnio(),
+            'artista' => $this->faker->name(),
         ];
+    }
+    public function getTipo():string{
+        //Elige aleatoriamente uno de los 3 tipos
+        $tipos = ['EP', 'Single', 'Album'];
+        $numRandom = rand(1, 3);
+        return $tipos[$numRandom];
+    }
+
+    public function getAnio():int{
+        return rand(1960, 2025);
     }
 }

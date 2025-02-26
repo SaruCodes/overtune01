@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('discos', function (Blueprint $table) {
             $table->id();
+            $table->string('titulo')->unique();
+            $table->string('tipo');
+            $table->integer('año');
+            $table->string('artista');
             $table->timestamps();
         });
     }

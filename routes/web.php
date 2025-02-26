@@ -3,6 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
+Route::resource('discos', DiscoController::class)
+    ->middleware('auth');
+
 Route::view("/","home")->name("home");
 
 Route::get('/dashboard', function () {
