@@ -39,7 +39,7 @@ class DiscoController extends Controller
         $datos = $request->only("titulo","tipo","año","artista");
         $disco = new Disco($datos);
         $disco->save();
-        session()->flash("mensaje","$disco->tipo titulado $disco->nombre registrado");
+        session()->flash("mensaje","$disco->tipo titulado $disco->titulo registrado");
 
         return redirect()->route('disco.index');
         //
@@ -60,6 +60,7 @@ class DiscoController extends Controller
     public function edit(Disco $disco)
     {
         //
+        return view('discos.edit',compact('disco'));
     }
 
     /**
@@ -67,7 +68,9 @@ class DiscoController extends Controller
      */
     public function update(UpdateDiscoRequest $request, Disco $disco)
     {
-        //
+        $disco->update($request->input());
+        session()->flash("mensaje","El $disco->tipo titulado $disco->titulo actualizado");
+        return redirect()->route('alumnos.index');
     }
 
     /**
