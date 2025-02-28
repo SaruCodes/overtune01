@@ -1,4 +1,4 @@
-<x-layouts.layout>
+<x-layouts.layout titulo="Overtune - Gestión">
     @if (session("mensaje"))
         <div id="message" role="alert" class="alert alert-success text-lg text-white bg-green-600 p-3 rounded-lg flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current mr-2" fill="none" viewBox="0 0 24 24">
@@ -9,17 +9,19 @@
     @endif
 
     <div class="p-4 bg-gray-200 flex space-x-4">
-        <a class="btn btn-primary text-lg">Nuevo Disco</a>
+        <a class="btn btn-primary text-lg" href="{{route("discos.create")}}">Nuevo Disco</a>
         <a class="btn btn-secondary text-lg" href="{{ route("home") }}">Volver</a>
     </div>
 
-    <div class="max-h-full overflow-x-auto p-4">
+    <div class="max-h-full overflow-x-auto p-4 mb-20">
         <table class="table-auto w-full border-collapse border border-gray-300 text-base text-gray-800">
             <thead class="bg-indigo-400 text-xl font-bold">
             <tr>
                 @foreach($campos as $campo)
                     <th class="border border-gray-400 p-2">{{$campo}}</th>
                 @endforeach
+                <!-- Add Edit Column Header -->
+                <th class="border border-gray-400 p-2">Editar</th>
                 <th class="border border-gray-400 p-2">Acciones</th>
             </tr>
             </thead>
@@ -29,7 +31,17 @@
                     @foreach($campos as $campo)
                         <td class="border border-gray-300 p-3">{{$fila->$campo}}</td>
                     @endforeach
-                    {{-- Botón de eliminar --}}
+
+                    <!-- Edit Button -->
+                    <td class="border border-gray-300 p-3">
+                        <a href="{{ route('discos.edit', $fila->id) }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="hover:text-blue-600 w-6 h-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10" />
+                            </svg>
+                        </a>
+                    </td>
+
+                    <!-- Delete Button -->
                     <td class="border border-gray-300 p-3 flex space-x-2">
                         <form onsubmit="event.preventDefault()" id="formulario{{$fila->id}}" action="{{ route("discos.destroy", $fila->id) }}" method="POST">
                             @csrf
