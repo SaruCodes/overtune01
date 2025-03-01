@@ -3,6 +3,7 @@
         <!-- Session Status -->
         <div class="bg-white rounded-2xl p-5">
             <form method="POST" action="{{ route('register') }}">
+                <h1 class="text-violet-950 font-bold ">¡Unete a Overtune!</h1>
                 @csrf
 
                 <!-- Name -->
