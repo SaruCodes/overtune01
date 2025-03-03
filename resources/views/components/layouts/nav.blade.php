@@ -14,6 +14,7 @@
             <li><a class="btn btn-outline btn-secondary" href="">Mejor puntuados</a></li>
             <li><a class="btn btn-outline btn-secondary" href="">Artistas</a></li>
             <li>
+            <x-layouts.lang />
                 @guest
                     <!-- Botón de acceso oculto en móvil -->
                     <details class="hidden md:inline-block">

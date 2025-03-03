@@ -1,11 +1,19 @@
 <x-layouts.layout titulo="Overtune - Gestión">
     <div class="min-h-screen flex flex-col">
         @if (session("mensaje"))
-            <div id="message" role="alert" class="alert alert-success text-lg text-white bg-green-600 p-3 rounded-lg flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 shrink-0 stroke-current mr-2" fill="none" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div id="message" role="alert" class="alert alert-success">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 shrink-0 stroke-current"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>{{ session("mensaje") }}</span>
+                <span>{{session("mensaje")}}</span>
             </div>
         @endif
 
@@ -39,7 +47,7 @@
                             </a>
                         </td>
                         <td class="border border-gray-300 p-3 flex space-x-2">
-                            <form onsubmit="event.preventDefault()" id="formulario{{$fila->id}}" action="{{ route("discos.destroy", $fila->id) }}" method="POST">
+                            <form onsubmit=event.preventDefault() id="formulario{{$fila->id}}" action="{{route("discos.destroy",$fila->id)}}" method="POST">
                                 @csrf
                                 @method("DELETE")
                                 <button onclick="confirmDelete({{$fila->id}})" class="text-red-600 hover:text-red-800">
@@ -56,4 +64,26 @@
             </table>
         </div>
     </div>
+    <script>
+        function confirmDelete (id){
+            swal({
+                title:"¿Confirmar borrado?",
+                text:"Esta acción no se puede deshacer",
+                icon: "warning",
+                buttons:true
+            }).then(function (ok){
+                if (ok) {
+                    let formulario = document.getElementById("formulario" + id);
+                    formulario.submit();
+                }
+            })
+
+        }
+        setTimeout( ()=>{
+            var message = document.getElementById("message")
+            message.style.transition="opacity 0.5s"
+            message.style.opacity='0'
+            setTimeout(()=>message.remove,500)
+        },5000);
+    </script>
 </x-layouts.layout>

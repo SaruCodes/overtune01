@@ -1,0 +1,20 @@
+<?php
+return[
+    "es"=>[
+        "name"=>"Español",
+        "flag"=>"🇪🇸",
+    ],
+    "en"=>[
+        "name"=>"English",
+        "flag"=>"🇬🇧",
+    ],
+    "fr"=>[
+        "name"=>"François",
+        "flag"=>"🇫🇷",
+    ],
+    "de"=>[
+        "name"=>"Deustch",
+        "flag"=>"🇩🇪",
+    ]
+]
+?>
