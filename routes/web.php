@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\DiscoController;
+use App\Http\Controllers\LanguageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 Route::resource('discos', DiscoController::class)
     ->middleware('auth');
+
+Route::get("lang/{language}", LanguageController::class)->name('language');
 
 Route::view("/","home")->name("home");
 

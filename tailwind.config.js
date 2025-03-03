@@ -24,7 +24,9 @@ export default {
                 "header":"#2e0059",
                 "nav":"#2e0059",
                 "main":"#f4f4f4",
-                "footer":"#130630"
+                "footer":"#130630",
+                "text-dark": "#111111",
+                "text": "#1e1e1e"
             },
         },
     },

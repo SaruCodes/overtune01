@@ -1,20 +1,18 @@
 <x-layouts.layout titulo="Overtune - Home">
-    @guest
-        <div
-            class="hero min-h-full"
-            style="background-image: url('{{ asset('images/fondo_home.jpg') }}');">
-            <div class="hero-overlay bg-opacity-60"></div>
-            <div class="hero-content text-neutral-content text-center">
-                <div class="max-w-md">
-                    <h1 class="mb-5 text-5xl font-bold">Overtune</h1>
-                    <p class="mb-5 white">
-                        Identificate para acceder a toda la web ¿Aun no eres miembro? Unete ahora!
-                    </p>
-                    <a class="btn btn-primary" href="{{route("login")}}">Login</a>
-                    <a class="btn btn-primary" href="{{route("register")}}">Registro</a>
-                </div>
+    <div
+        class="hero min-h-[80vh]"
+        style="background-image: url('{{ asset('images/fondo_home.jpg') }}');">
+        <div class="hero-overlay bg-opacity-60"></div>
+        <div class="hero-content text-neutral-content text-center">
+            <div class="max-w-md">
+                <h1 class="mb-5 text-5xl font-bold">Overtune</h1>
+                <p class="mb-5 white">
+                    Identificate para acceder a toda la web ¿Aun no eres miembro? Unete ahora!
+                </p>
             </div>
         </div>
+    </div>
+    @guest
         <section class="p-8 bg-gray-100">
             <h2 class="text-3xl font-semibold text-center mb-8">Los 3 Mejores Álbumes</h2>
             <div class="flex justify-center gap-6">
