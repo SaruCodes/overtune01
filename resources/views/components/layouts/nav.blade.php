@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 bg-nav h-18 md:h-21 flex flex-row px-4 justify-between items-center">
+<div class="navbar bg-base-100 bg-nav h-18 md:h-21 flex flex-row px-4 justify-between items-center z-50">
     <!-- Logo (Oculto en móvil) -->
     <div class="flex-1 flex items-center">
         <a href="{{ route('home') }}">
@@ -17,12 +17,12 @@
             <li class="flex items-center">
                 <x-layouts.lang />
             </li>
-            <li class="flex items-center">
+            <li class="flex items-center relative z-50">
                 @guest
                     <!-- Botón de acceso con menú desplegable -->
-                    <details class="relative flex items-center">
+                    <details class="relative flex items-center z-50">
                         <summary class="btn btn-outline btn-primary">Acceso</summary>
-                        <ul class="absolute left-0 mt-2 w-40 bg-base-100 rounded-md shadow-lg p-2">
+                        <ul class="absolute left-0 mt-2 w-40 bg-base-100 rounded-md shadow-lg p-2 z-50">
                             <li><a class="btn btn-outline btn-primary w-full" href="{{ route('login') }}">Login</a></li>
                             <li><a class="btn btn-outline btn-primary w-full" href="{{ route('register') }}">Register</a></li>
                         </ul>

@@ -2,7 +2,7 @@
     <div class="relative flex flex-col justify-center items-center min-h-[80vh] bg-gray-300 text-gray-900"
          style="background: url('{{ asset('images/tunel.jpg') }}') center/cover no-repeat;">
         <!-- Capa de difuminado -->
-        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="absolute inset-0 bg-purple-950 bg-opacity-50"></div>
 
         <!-- Contenedor del formulario -->
         <div class="relative bg-white bg-opacity-90 rounded-2xl p-6 shadow-lg w-full max-w-md">
