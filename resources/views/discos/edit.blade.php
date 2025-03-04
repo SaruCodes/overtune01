@@ -1,5 +1,5 @@
 <x-layouts.layout titulo="Overtune - Nuevo Disco">
-    <div class="flex justify-center items-center min-h-screen bg-gray-100">
+    <div class="flex justify-center items-center min-h-screen bg-violet-100">
         <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
             <h1 class="text-2xl font-semibold text-gray-800 mb-6">Editar Disco</h1>
             <form action="{{ route('discos.update', $disco->id) }}" method="POST">
