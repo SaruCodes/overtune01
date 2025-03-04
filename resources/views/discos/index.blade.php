@@ -56,7 +56,7 @@
                                     </svg>
                                 </button>
                             </form>
-                            <a class="text-blue-600 hover:text-blue-800" href="#">Ver</a>
+                            <a class="text-blue-600 hover:text-blue-800" href="{{route("discos.show",$fila->id)}}">Editar</a>
                         </td>
                     </tr>
                 @endforeach
@@ -85,5 +85,18 @@
             message.style.opacity='0'
             setTimeout(()=>message.remove,500)
         },5000);
+
+        function confirmEdit(id) {
+            swal({
+                title: "¿Seguro que quiere editar?",
+                text: "Va a editar un disco en la BBDD, esta acción no se puede deshacer",
+                icon: "warning",
+                buttons: true
+            }).then(function (ok) {
+                if (ok) {
+                    window.location.href = "/discos/" + id + "/edit"; // Redirige a la ruta de edición
+                }
+            });
+        }
     </script>
 </x-layouts.layout>

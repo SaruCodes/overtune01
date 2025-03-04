@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->id();
-            $table->string('genero');
-            $table->enum("subgenero",[null,"rock", "pop","B1","B2","C1","C2"])
+            $table->enum('genero', ['Rock', 'Pop', 'Jazz', 'Hip-Hop', 'Clasica', 'Electronica', 'Indie', 'R&B', 'Latina', 'Alternativa']);
+            $table->string('sub-genero')
                 ->nullable();
-
             $table->foreignId('disco_id')->
             constrained()
                 ->onUpdate('cascade')

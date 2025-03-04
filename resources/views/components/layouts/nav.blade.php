@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 bg-nav h-18 md:h-23 flex flex-row px-4 justify-between items-center">
+<div class="navbar bg-base-100 bg-nav h-18 md:h-21 flex flex-row px-4 justify-between items-center">
     <!-- Logo (Oculto en móvil) -->
     <div class="flex-1 flex items-center">
         <a href="{{ route('home') }}">
