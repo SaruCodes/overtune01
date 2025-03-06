@@ -91,6 +91,13 @@
     "Registrarse Ahora": "Sign Up Now",
     "Gestión de biblioteca de Música": "Music Library Management",
     "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de álbumes musicales": "We manage the creation, deletion, updates, and removal of a music album database.",
-    "Acceso a gestión": "Access Management"
-
+    "Acceso a gestión": "Access Management",
+    "Inicio": "Home",
+    "Novedades": "News",
+    "Mejor puntuados": "Top Rated",
+    "Artistas": "Artists",
+    "Acceso": "Access",
+    "Registro": "Register",
+    "Cerrar sesión": "Logout",
+    "Todos los derechos reservados": "All rights reserved"
 }
