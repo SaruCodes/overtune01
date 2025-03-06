@@ -19,12 +19,11 @@
             </li>
             <li class="flex items-center relative z-50">
                 @guest
-                    <!-- Botón de acceso con menú desplegable -->
                     <details class="relative flex items-center z-50">
                         <summary class="btn btn-outline btn-primary">Acceso</summary>
-                        <ul class="absolute left-0 mt-2 w-40 bg-base-100 rounded-md shadow-lg p-2 z-50">
-                            <li><a class="btn btn-outline btn-primary w-full" href="{{ route('login') }}">Login</a></li>
-                            <li><a class="btn btn-outline btn-primary w-full" href="{{ route('register') }}">Register</a></li>
+                        <ul class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-violet-900 text-white rounded-md shadow-lg p-2 z-50">
+                            <li><a class="block px-4 py-2 hover:bg-violet-800 rounded-md" href="{{ route('login') }}">{{__('Login')}}</a></li>
+                            <li><a class="block px-4 py-2 hover:bg-violet-800 rounded-md" href="{{ route('register') }}">{{__('Register')}}</a></li>
                         </ul>
                     </details>
                 @endguest

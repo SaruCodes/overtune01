@@ -8,13 +8,11 @@
         </div>
     </x-slot>
     <x-slot name="content">
-        @foreach(config("languages") as $code => $lang)
-            <span class="">
-                <a href="{{ route('language', $code) }}" class="px-2 py-1">
-                    {{ $lang['name'] }}
-                    {{ $lang['flag'] }}
-                </a>
-            </span>
+        @foreach(config('languages') as $locale => $language)
+            <x-dropdown-link :href="route('language', $locale)">
+                {{ $language['name'] }} {!! $language['flag'] !!}
+            </x-dropdown-link>
         @endforeach
     </x-slot>
 </x-dropdown>
+

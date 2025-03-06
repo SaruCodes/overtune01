@@ -24,8 +24,8 @@
             @endforeach
         </div>
     @else
-        <div class="text-center p-4 bg-yellow-100 border border-yellow-400 rounded-lg mx-8 mb-6">
-            <p class="text-lg font-semibold text-yellow-800">No hay géneros asociados con este disco.</p>
+        <div class="text-center p-4 bg-pink-100 border border-pink-400 rounded-lg mx-8 mb-6">
+            <p class="text-lg font-semibold text-pink-800">No hay géneros asociados con este disco.</p>
         </div>
     @endif
 </x-layouts.layout>

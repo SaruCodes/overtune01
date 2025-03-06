@@ -7,14 +7,14 @@
             <div class="max-w-md">
                 <h1 class="mb-5 text-5xl font-bold">Overtune</h1>
                 <p class="mb-5 white">
-                    Identificate para acceder a toda la web ¿Aun no eres miembro? Unete ahora!
+                    {{ __('La web para fanáticos de la música. Puntúa, reseña y guarda tus lanzamientos musicales favoritos') }}
                 </p>
             </div>
         </div>
     </div>
     @guest
         <section class="p-8 bg-gray-100">
-            <h2 class="text-3xl font-semibold text-center mb-8">Los 3 Mejores Álbumes</h2>
+            <h2 class="text-3xl font-semibold text-center mb-8">{{ __('Los 3 Mejores Álbumes') }}</h2>
             <div class="flex justify-center gap-6">
                 <!-- Álbum 1 -->
                 <div class="card w-60 shadow-xl">
@@ -51,11 +51,11 @@
 
         <!-- Sección Adicional de Presentación -->
         <section class="p-8 bg-blue-50">
-            <h2 class="text-3xl font-semibold text-center mb-8">Bienvenido a la Plataforma</h2>
+            <h2 class="text-3xl font-semibold text-center mb-8">Bienvenido a Overtune</h2>
             <div class="max-w-4xl mx-auto text-center">
                 <p class="text-lg mb-4">
-                    Explora nuestras funcionalidades para gestionar discos, álbumes y artistas.
-                    Conoce la mejor forma de interactuar con la plataforma.
+                    {{ __('Explora nuestras funcionalidades para gestionar discos, álbumes y artistas.
+                    Conoce la mejor forma de interactuar con la plataforma.')}}
                 </p>
                 <a class="btn btn-secondary" href="{{ route('register') }}">Registrarse Ahora</a>
             </div>
@@ -70,7 +70,7 @@
                         class="w-60 h-60 object-cover"/>
                 </figure>
                 <div class="card-body">
-                    <h2 class="card-title">New album is released!</h2>
+                    <h2 class="card-title">Gestion de biblioteca de Música</h2>
                     <p>Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales</p>
                     <div class="card-actions justify-end">
                         <a class="btn btn-outline btn-primary" href="{{route("discos.index")}}">Acceso a gestión</a>
