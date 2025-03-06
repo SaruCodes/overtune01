@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDiscoRequest;
 use App\Http\Requests\UpdateDiscoRequest;
 use App\Models\Disco;
+use App\Models\Genero;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
 
@@ -36,6 +37,7 @@ class DiscoController extends Controller
      */
     public function store(StoreDiscoRequest $request)
     {
+        $this->authorize('create', Disco::class);
         $datos = $request->only("titulo", "tipo", "año", "artista");
 
         // Manejo de la imagen
@@ -49,6 +51,7 @@ class DiscoController extends Controller
         // Crear un nuevo disco y guardar en la base de datos
         $disco = new Disco($datos);
         $disco->save();
+
 
         session()->flash("mensaje", "$disco->tipo titulado $disco->titulo registrado");
         return redirect()->route('discos.index');
@@ -75,7 +78,8 @@ class DiscoController extends Controller
      */
     public function update(UpdateDiscoRequest $request, Disco $disco)
     {
-        $datos = $request->input();
+        $this->authorize('update', $disco);
+        $datos = $request->validated();  // Usar validated() en lugar de input(), ya que UpdateDiscoRequest ya valida los datos
 
         // Manejo de la imagen
         if ($request->hasFile('cover_image')) {
@@ -86,22 +90,22 @@ class DiscoController extends Controller
 
             // Subir la nueva imagen
             $imagen = $request->file('cover_image');
-            $imagenNombre = $imagen->store('images/discos', 'public'); // Guardar en la carpeta public/images/discos/
-            $datos['cover_image'] = $imagenNombre; // Actualizar la ruta de la imagen
+            $imagenNombre = $imagen->store('images/discos', 'public');
+            $datos['cover_image'] = $imagenNombre;
         }
 
-        // Actualizar los datos del disco
         $disco->update($datos);
-
-        session()->flash("mensaje", "El $disco->tipo titulado $disco->titulo actualizado");
+        session()->flash("mensaje", "El $disco->tipo titulado $disco->titulo fue actualizado correctamente.");
         return redirect()->route('discos.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Disco $disco)
     {
+        $this->authorize('delete', $disco);
         // Eliminar la imagen asociada
         if ($disco->cover_image && Storage::exists('public/' . $disco->cover_image)) {
             Storage::delete('public/' . $disco->cover_image);
@@ -111,6 +115,12 @@ class DiscoController extends Controller
         session()->flash("mensaje", "El $disco->tipo titulado $disco->titulo ha sido eliminado");
         return redirect()->route('discos.index');
     }
+
+    public function generos()
+    {
+        return $this->hasMany(Genero::class);
+    }
+
 
     /**
      * Saca los últimos discos añadidos a la web en la página de novedades.

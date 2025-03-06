@@ -61,4 +61,10 @@ class GeneroController extends Controller
     {
         //
     }
+
+    public function disco()
+    {
+        return $this->belongsTo(Disco::class);
+    }
+
 }

@@ -29,7 +29,7 @@ class DiscoPolicy
      */
     public function create(User $user): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -37,7 +37,7 @@ class DiscoPolicy
      */
     public function update(User $user, Disco $disco): bool
     {
-        return false;
+        return true;
     }
 
     /**

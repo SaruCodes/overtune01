@@ -15,6 +15,8 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/novedades', [DiscoController::class, 'novedades'])->name('novedades');
 Route::put('/discos/{disco}', [DiscoController::class, 'update'])->name('discos.update');
+Route::resource('discos', DiscoController::class);
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
