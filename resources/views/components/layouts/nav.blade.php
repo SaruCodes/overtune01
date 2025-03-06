@@ -11,7 +11,7 @@
     <div class="flex-none">
         <ul class="menu menu-horizontal px-1 space-x-4 flex items-center h-full">
             <li><a class="btn btn-outline btn-secondary" href="{{ route('home') }}">Inicio</a></li>
-            <li><a class="btn btn-outline btn-secondary" href="">Novedades</a></li>
+            <li><a class="btn btn-outline btn-secondary" href="{{ route('novedades') }}">Novedades</a></li>
             <li><a class="btn btn-outline btn-secondary" href="">Mejor puntuados</a></li>
             <li><a class="btn btn-outline btn-secondary" href="">Artistas</a></li>
             <li class="flex items-center">

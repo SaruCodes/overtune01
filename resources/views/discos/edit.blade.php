@@ -1,24 +1,23 @@
-<x-layouts.layout titulo="Overtune - Nuevo Disco">
+<x-layouts.layout titulo="Overtune - Editar Disco">
     <div class="flex justify-center items-center min-h-screen bg-violet-100">
         <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-lg">
             <h1 class="text-2xl font-semibold text-gray-800 mb-6">Editar Disco</h1>
-            <form action="{{ route('discos.update', $disco->id) }}" method="POST">
+            <form action="{{ route('discos.update', $disco->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
                 <div class="space-y-4">
                     <!-- Nombre -->
                     <div>
-                        <x-input-label for="nombre" value="Nombre del Disco" />
+                        <x-input-label for="titulo" value="Nombre del Disco" />
                         <x-text-input
-                            id="nombre"
-                            name="nombre"
+                            id="titulo"
+                            name="titulo"
                             class="block mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                             type="text"
-                            value="{{ old('nombre', $disco->nombre) }}"
+                            value="{{ old('titulo', $disco->titulo) }}"
                             required
-                            autofocus
                         />
-                        @error("nombre")
+                        @error("titulo")
                         <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                         @enderror
                     </div>
@@ -73,6 +72,18 @@
                             placeholder="Nombre del artista o grupo"
                         />
                         @error("artista")
+                        <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
+
+                    <!-- Imagen de portada -->
+                    <div>
+                        <x-input-label for="cover_image" value="Imagen de Portada" />
+                        <input type="file" name="cover_image" class="block mt-1 w-full" />
+                        @if($disco->cover_image && $disco->cover_image !== 'images/discos/placeholder.jpg')
+                            <img src="{{ asset('storage/' . $disco->cover_image) }}" alt="Imagen del Disco" class="mt-2 w-32 h-32 object-cover rounded-md" />
+                        @endif
+                        @error("cover_image")
                         <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                         @enderror
                     </div>

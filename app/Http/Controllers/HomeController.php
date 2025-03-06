@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disco;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -13,7 +14,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // Aquí iría la lógica para mostrar la vista del Home
-        return view('home'); // Retorna home.blade.php
+        $discos = Disco::take(3)->get(); // Obtener 3 discos desde la base de datos
+        // Pasamos la variable $discos a la vista 'home'
+        return view('home', compact('discos'));
     }
 }

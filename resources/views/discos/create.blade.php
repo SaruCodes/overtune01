@@ -1,7 +1,7 @@
 <x-layouts.layout titulo="Overtune - Nuevo Disco">
     <div class="flex flex-col justify-center items-center min-h-screen bg-violet-100 py-12">
         <!-- Formulario -->
-        <form action="{{route('discos.store')}}" method="POST" class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8">
+        <form action="{{route('discos.store')}}" method="POST" class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8" enctype="multipart/form-data">
             @csrf
 
             <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Nuevo Disco</h1>
@@ -40,12 +40,15 @@
                         <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-                </div>
 
-                <!-- Columna de Información adicional -->
-                <div class="space-y-4 px-4">
-                    <h2 class="font-semibold text-lg text-gray-700">Información Adicional</h2>
-                    <!-- Aquí puedes agregar más campos si los tienes en mente -->
+                    <!-- Imagen de portada -->
+                    <div>
+                        <x-input-label for="cover_image" value="Imagen de Portada" />
+                        <x-text-input id="cover_image" class="block mt-1 w-full" type="file" name="cover_image" />
+                        @error("cover_image")
+                        <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
             </div>
 

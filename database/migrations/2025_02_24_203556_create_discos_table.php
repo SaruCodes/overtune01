@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('tipo');
             $table->integer('año');
             $table->string('artista');
+            $table->string('cover_image')->nullable()->default('images/discos/placeholder.jpg');
             $table->timestamps();
         });
     }
@@ -29,3 +30,4 @@ return new class extends Migration
         Schema::dropIfExists('discos');
     }
 };
+
