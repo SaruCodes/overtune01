@@ -11,7 +11,7 @@ class StoreDiscoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,22 @@ class StoreDiscoRequest extends FormRequest
      */
     public function rules(): array
     {
+
         return [
-            //
+            'titulo'      => 'required|string|unique:discos,titulo',
+            'tipo'        => 'required|string',
+            'anio'         => 'required|integer|min:1950|max:' . date('Y'),
+            'artista'     => 'required|string',
+            'cover_image' => 'nullable|image|max:2048',
         ];
     }
+
+    public function store(StoreDiscoRequest $request)
+    {
+        dd($request->all());
+        // ...
+    }
+
+
+
 }

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('titulo')->unique();
             $table->string('tipo');
-            $table->integer('año');
+            $table->integer('anio');
             $table->string('artista');
             $table->string('cover_image')->nullable()->default('images/discos/placeholder.jpg');
             $table->timestamps();

@@ -13,13 +13,13 @@ return new class extends Migration
     {
         Schema::create('generos', function (Blueprint $table) {
             $table->id();
-            $table->enum('genero', ['Rock', 'Pop', 'Jazz', 'Hip-Hop', 'Clasica', 'Electronica', 'Indie', 'R&B', 'Latina', 'Alternativa']);
-            $table->string('sub-genero')
-                ->nullable();
             $table->foreignId('disco_id')->
-            constrained()
+                constrained()
                 ->onUpdate('cascade')
                 ->onDelete("cascade");
+            $table->enum('genero', ['Rock', 'Pop', 'Jazz', 'Hip-Hop', 'Clasica', 'Electronica', 'Indie', 'R&B', 'Latina', 'Alternativa']);
+            $table->string('subgenero')
+                ->nullable();
             $table->timestamps();
         });
     }

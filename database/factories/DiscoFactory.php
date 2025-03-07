@@ -19,7 +19,7 @@ class DiscoFactory extends Factory
         return [
             'titulo' => $this->faker->unique()->sentence(3), //3 palabras aleatorias juntas
             'tipo' => $this->getTipo(),
-            'año' => $this->getAnio(),
+            'anio' => $this->getAnio(),
             'artista' => $this->faker->name(),
         ];
     }

@@ -37,24 +37,25 @@ class DiscoController extends Controller
      */
     public function store(StoreDiscoRequest $request)
     {
-        $this->authorize('create', Disco::class);
-        $datos = $request->only("titulo", "tipo", "año", "artista");
-
-        // Manejo de la imagen
-        if ($request->hasFile('cover_image')) {
-            // Subir la imagen y obtener el nombre de archivo
-            $imagen = $request->file('cover_image');
-            $imagenNombre = $imagen->store('images/discos', 'public'); // Guardar en la carpeta public/images/discos/
-            $datos['cover_image'] = $imagenNombre; // Almacenar la ruta en los datos
-        }
-
-        // Crear un nuevo disco y guardar en la base de datos
+        $datos = $request->only("titulo","tipo","anio","artista","cover_image");
         $disco = new Disco($datos);
         $disco->save();
 
+        if ($request->has("discos")){
+            foreach ($request->generos as $genero_disco){
+                $genero = new Genero();
+                $genero->disco_id= $disco->id;
+                $genero->genero = $genero_disco;
+                $genero->nivel = $request->subgenero[$genero_disco];
+                $disco->save();
+            }
+        }
 
-        session()->flash("mensaje", "$disco->tipo titulado $disco->titulo registrado");
+        $genero->save();
+        session()->flash("mensaje","Disco $genero->titulo registrado");
+
         return redirect()->route('discos.index');
+        //
     }
 
     /**
@@ -78,7 +79,6 @@ class DiscoController extends Controller
      */
     public function update(UpdateDiscoRequest $request, Disco $disco)
     {
-        $this->authorize('update', $disco);
         $datos = $request->validated();  // Usar validated() en lugar de input(), ya que UpdateDiscoRequest ya valida los datos
 
         // Manejo de la imagen
@@ -105,7 +105,6 @@ class DiscoController extends Controller
      */
     public function destroy(Disco $disco)
     {
-        $this->authorize('delete', $disco);
         // Eliminar la imagen asociada
         if ($disco->cover_image && Storage::exists('public/' . $disco->cover_image)) {
             Storage::delete('public/' . $disco->cover_image);

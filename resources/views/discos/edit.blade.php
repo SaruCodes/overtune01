@@ -42,19 +42,19 @@
 
                     <!-- Año de Publicación -->
                     <div>
-                        <x-input-label for="año" value="Año de Publicación" />
+                        <x-input-label for="anio" value="Año de Publicación" />
                         <x-text-input
-                            id="año"
-                            name="año"
+                            id="anio"
+                            name="anio"
                             class="block mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
                             type="number"
-                            value="{{ old('año', $disco->año) }}"
+                            value="{{ old('anio', $disco->anio) }}"
                             min="1950"
                             max="{{ date('Y') }}"
                             required
                             placeholder="Por ejemplo: 1980"
                         />
-                        @error("año")
+                        @error("anio")
                         <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                         @enderror
                     </div>
