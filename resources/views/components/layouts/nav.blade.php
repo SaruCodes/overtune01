@@ -1,4 +1,4 @@
-<div class="navbar bg-base-100 bg-nav h-18 md:h-21 flex flex-row px-4 justify-between items-center z-50">
+<div class="navbar bg-base-100 bg-nav h-18 md:h-21 flex flex-row px-4 justify-between items-center z-50 overflow-visible">
     <!-- Logo (Oculto en móvil) -->
     <div class="flex-1 flex items-center">
         <a href="{{ route('home') }}">
@@ -21,7 +21,7 @@
                 @guest
                     <details class="relative flex items-center z-50">
                         <summary class="btn btn-outline btn-primary">{{ __('Acceso') }}</summary>
-                        <ul class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-violet-900 text-white rounded-md shadow-lg p-2 z-50">
+                        <ul class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-violet-900 text-white rounded-md shadow-lg p-2 z-50 max-w-full">
                             <li><a class="block px-4 py-2 hover:bg-violet-800 rounded-md" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="block px-4 py-2 hover:bg-violet-800 rounded-md" href="{{ route('register') }}">{{ __('Registro') }}</a></li>
                         </ul>

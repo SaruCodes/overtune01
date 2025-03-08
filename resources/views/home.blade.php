@@ -37,11 +37,12 @@
         </div>
     </div>
 
-    <section class="p-8 bg-gray-100">
-        <h2 class="text-3xl font-semibold text-center mb-8">{{ __('Últimos 3 Álbumes Introducidos') }}</h2>
+    <!-- Sección de discos con margen superior añadido -->
+    <section class="p-8 bg-violet-100 mt-12">
+        <h2 class="text-3xl font-semibold text-center mb-8">{{ __('Los 3 Mejores Álbumes') }}</h2>
         <div class="flex justify-center gap-6">
             @foreach ($discos->sortByDesc('created_at')->take(3) as $disco)
-                <div class="card w-60 shadow-xl">
+                <div class="card w-60 shadow-xl bg-gray-50">
                     <figure>
                         <img class="w-full h-40 object-cover" src="{{ $disco->cover_image ? asset('storage/' . $disco->cover_image) : 'https://via.placeholder.com/200' }}" alt="{{ $disco->titulo }}" />
                     </figure>
@@ -55,10 +56,9 @@
         </div>
     </section>
 
-
     @guest
         <!-- Sección Adicional de Presentación -->
-        <section class="p-8 bg-blue-50">
+        <section class="p-8 bg-violet-100">
             <h2 class="text-3xl font-semibold text-center mb-8">{{__ ('Bienvenido a Overtune')}}</h2>
             <div class="max-w-4xl mx-auto text-center">
                 <p class="text-lg mb-4">
@@ -69,22 +69,19 @@
             </div>
         </section>
     @endguest
-        @auth
-            <div class="card lg:card-side bg-base-100 shadow-xl">
-                <figure>
-                    <img
-                        src="{{asset('/images/cd.jpg')}}"
-                        alt="Album"
-                        class="w-60 h-60 object-cover"/>
-                </figure>
-                <div class="card-body">
-                    <h2 class="card-title">{{__ ('Gestion de biblioteca de Música')}}</h2>
-                    <p>{{__ ('Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales')}}</p>
-                    <div class="card-actions justify-end">
-                        <a class="btn btn-outline btn-primary" href="{{route("discos.index")}}">{{__ ('Acceso a gestión')}}</a>
-                    </div>
+
+    @auth
+        <div class="card bg-base-100 image-full w-104 mx-auto shadow-sm mt-12">
+            <figure class="h-full">
+                <img src="{{ asset('/images/guitar.jpg') }}" alt="Album" class="object-cover w-full h-full"/>
+            </figure>
+            <div class="card-body flex items-center justify-center flex-col text-center">
+                <h2 class="card-title">{{__('Gestión de biblioteca de Música')}}</h2>
+                <p>{{__('Gestionamos altas, bajas, actualizaciones y borrado de una tabla de álbumes musicales')}}</p>
+                <div class="card-actions justify-end mt-4">
+                    <a class="btn btn-outline btn-primary" href="{{ route('discos.index') }}">{{__('Acceso a gestión')}}</a>
                 </div>
             </div>
-        @endauth
-
+        </div>
+    @endauth
 </x-layouts.layout>

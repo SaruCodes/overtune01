@@ -1,5 +1,5 @@
 <x-layouts.layout titulo="Overtune - Login">
-    <div class="relative flex flex-col justify-center items-center min-h-[80vh] bg-gray-300 text-gray-900"
+    <div class="relative flex flex-col justify-center items-center min-h-screen bg-gray-300 text-gray-900"
          style="background: url('{{ asset('images/tunel.jpg') }}') center/cover no-repeat;">
         <div class="absolute inset-0 bg-purple-950 bg-opacity-50"></div>
 
@@ -13,14 +13,14 @@
 
                 <!-- Email Address -->
                 <div>
-                    <x-input-label for="email" :value="__('Nombre')" class="text-gray-800 font-bold" /> <!-- Changed to text-gray-800 -->
+                    <x-input-label for="email" :value="__('Nombre')" class="text-gray-800 font-bold" />
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!-- Password -->
                 <div class="mt-4">
-                    <x-input-label for="password" :value="__('Contraseña')" class="text-gray-800 font-bold" /> <!-- Changed to text-gray-800 -->
+                    <x-input-label for="password" :value="__('Contraseña')" class="text-gray-800 font-bold" />
                     <x-text-input id="password" class="block mt-1 w-full"
                                   type="password"
                                   name="password"
@@ -43,7 +43,7 @@
                         </a>
                     @endif
 
-                    <x-primary-button class="ms-3 bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-md"> <!-- Changed button color to purple -->
+                    <x-primary-button class="ms-3 bg-purple-700 hover:bg-purple-800 text-white px-4 py-2 rounded-md">
                         {{ __('Log in') }}
                     </x-primary-button>
                 </div>

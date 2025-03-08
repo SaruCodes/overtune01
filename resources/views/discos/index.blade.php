@@ -14,6 +14,20 @@
             <a class="btn btn-secondary text-lg" href="{{ route("home") }}">Volver</a>
         </div>
 
+        <!-- Formulario de filtro por género -->
+        <form action="{{ route('discos.index') }}" method="GET" class="flex justify-end space-x-4 p-4">
+            <select name="genero_id" id="genero_id" class="p-2 border border-gray-300 rounded">
+                <option value="">Seleccionar Género</option>
+                @foreach($generos as $genero)
+                    <option value="{{ $genero->id }}" {{ request('genero_id') == $genero->id ? 'selected' : '' }}>
+                        {{ $genero->nombre }}
+                    </option>
+                @endforeach
+            </select>
+            <button type="submit" class="btn btn-primary">Filtrar</button>
+        </form>
+
+        <!-- Tabla con los discos -->
         <div class="max-h-full overflow-x-auto p-4 flex-grow">
             <table class="table-auto w-full border-collapse border border-gray-300 text-base text-gray-800">
                 <thead class="bg-indigo-400 text-xl font-bold">
@@ -39,7 +53,7 @@
                             </a>
                         </td>
                         <td class="border border-gray-300 p-3 flex space-x-2">
-                            <form onsubmit=event.preventDefault() id="formulario{{$fila->id}}" action="{{route("discos.destroy",$fila->id)}}" method="POST">
+                            <form onsubmit="event.preventDefault()" id="formulario{{$fila->id}}" action="{{route('discos.destroy',$fila->id)}}" method="POST">
                                 @csrf
                                 @method("DELETE")
                                 <button onclick="confirmDelete({{$fila->id}})" class="text-red-600 hover:text-red-800">
@@ -48,7 +62,7 @@
                                     </svg>
                                 </button>
                             </form>
-                            <a class="text-blue-600 font-bold hover:text-blue-800 cursor-pointer" href="{{route("discos.show",$fila->id)}}">Ver</a>
+                            <a class="text-blue-600 font-bold hover:text-blue-800 cursor-pointer" href="{{route('discos.show',$fila->id)}}">Ver</a>
                         </td>
                     </tr>
                 @endforeach
@@ -56,39 +70,40 @@
             </table>
         </div>
     </div>
-    <script>
-        function confirmDelete (id){
-            swal({
-                title:"¿Confirmar borrado?",
-                text:"Esta acción no se puede deshacer",
-                icon: "warning",
-                buttons:true
-            }).then(function (ok){
-                if (ok) {
-                    let formulario = document.getElementById("formulario" + id);
-                    formulario.submit();
-                }
-            })
-
-        }
-        setTimeout( ()=>{
-            var message = document.getElementById("message")
-            message.style.transition="opacity 0.5s"
-            message.style.opacity='0'
-            setTimeout(()=>message.remove,500)
-        },5000);
-
-        function confirmEdit(id) {
-            swal({
-                title: "¿Seguro que quiere editar?",
-                text: "Va a editar un disco en la BBDD, esta acción no se puede deshacer",
-                icon: "warning",
-                buttons: true
-            }).then(function (ok) {
-                if (ok) {
-                    window.location.href = "/discos/" + id + "/edit"; // Redirige a la ruta de edición
-                }
-            });
-        }
-    </script>
 </x-layouts.layout>
+
+<script>
+    function confirmDelete (id){
+        swal({
+            title:"¿Confirmar borrado?",
+            text:"Esta acción no se puede deshacer",
+            icon: "warning",
+            buttons:true
+        }).then(function (ok){
+            if (ok) {
+                let formulario = document.getElementById("formulario" + id);
+                formulario.submit();
+            }
+        })
+    }
+
+    setTimeout( ()=>{
+        var message = document.getElementById("message")
+        message.style.transition="opacity 0.5s"
+        message.style.opacity='0'
+        setTimeout(()=>message.remove,500)
+    },5000);
+
+    function confirmEdit(id) {
+        swal({
+            title: "¿Seguro que quiere editar?",
+            text: "Va a editar un disco en la BBDD, esta acción no se puede deshacer",
+            icon: "warning",
+            buttons: true
+        }).then(function (ok) {
+            if (ok) {
+                window.location.href = "/discos/" + id + "/edit"; // Redirige a la ruta de edición
+            }
+        });
+    }
+</script>

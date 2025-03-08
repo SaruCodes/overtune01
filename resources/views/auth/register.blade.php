@@ -1,5 +1,5 @@
 <x-layouts.layout titulo="Overtune - Register">
-    <div class="relative flex flex-col justify-center items-center min-h-[80vh] bg-gray-300 text-gray-900"
+    <div class="relative flex flex-col justify-center items-center min-h-screen bg-gray-300 text-gray-900"
          style="background: url('{{ asset('images/tunel.jpg') }}') center/cover no-repeat;">
         <!-- Capa de difuminado -->
         <div class="absolute inset-0 bg-purple-950 bg-opacity-50"></div>
@@ -50,6 +50,4 @@
             </form>
         </div>
     </div>
-
 </x-layouts.layout>
-

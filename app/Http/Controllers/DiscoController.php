@@ -8,19 +8,31 @@ use App\Models\Disco;
 use App\Models\Genero;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Http\Request;
 
 class DiscoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+
+        $generos = Genero::all();
+
         $campos = Schema::getColumnListing('discos');
         $exclude = ["created_at", "updated_at"];
         $campos = array_diff($campos, $exclude);
-        $filas = Disco::select($campos)->get();
-        return view('discos.index', compact('filas', "campos"));
+
+        $query = Disco::select($campos);
+
+        // Si hay un género seleccionado, filtramos los discos por ese género
+        if ($request->has('genero_id') && $request->genero_id != '') {
+            $query->where('genero_id', $request->genero_id);
+        }
+
+        $filas = $query->get();
+        return view('discos.index', compact('filas', 'campos', 'generos'));
     }
 
     /**
