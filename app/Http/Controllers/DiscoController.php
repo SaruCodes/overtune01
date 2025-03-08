@@ -37,10 +37,23 @@ class DiscoController extends Controller
     public function store(StoreDiscoRequest $request)
     {
         // Obtenemos solo los datos necesarios
-        $datos = $request->only("titulo","tipo","anio","artista","cover_image");
+        $datos = $request->only("titulo", "tipo", "anio", "artista", "cover_image");
 
         // Creamos el objeto disco con los datos proporcionados
         $disco = new Disco($datos);
+
+        // Procesamos la imagen
+        if ($request->hasFile('cover_image')) {
+            // Subimos la imagen a la carpeta 'public/images/discos'
+            $imagePath = $request->file('cover_image')->store('images/discos', 'public');
+
+            // Guardamos la ruta de la imagen en la base de datos
+            $disco->cover_image = $imagePath;
+        } else {
+            // Si no hay imagen, asignamos un placeholder
+            $disco->cover_image = 'images/discos/placeholder.jpg';
+        }
+
         $disco->save();  // Guardamos el disco
 
         // Verificamos si se han enviado géneros
@@ -66,8 +79,9 @@ class DiscoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Disco $disco)
+    public function show($id)
     {
+        $disco = Disco::with('genero')->find($id);
         return view('discos.show', compact('disco'));
     }
 
@@ -88,29 +102,34 @@ class DiscoController extends Controller
         if ($request->hasFile('cover_image')) {
             // Eliminar la imagen anterior si existe
             if ($disco->cover_image && $disco->cover_image !== 'images/discos/placeholder.jpg') {
-                Storage::delete('public/' . $disco->cover_image); // Esto elimina la imagen vieja
+                Storage::delete('public/' . $disco->cover_image);
             }
 
             // Subir la nueva imagen a la carpeta 'images/discos'
             $coverImagePath = $request->file('cover_image')->store('images/discos', 'public');
-            $disco->cover_image = $coverImagePath;  // Asignar la ruta a la columna
+            $disco->cover_image = $coverImagePath;  // Asignar la nueva ruta
         }
 
-
+        // Actualizamos el disco
         $disco->update($request->except('cover_image'));
         session()->flash("mensaje", "Disco $disco->titulo actualizado");
         return redirect()->route('discos.index');
     }
-
-
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Disco $disco)
     {
+        // Eliminar la imagen si existe
+        if ($disco->cover_image && $disco->cover_image !== 'images/discos/placeholder.jpg') {
+            Storage::delete('public/' . $disco->cover_image);
+        }
+
+        // Eliminar el disco
         $disco->delete();
         session()->flash("mensaje", "El $disco->tipo titulado $disco->titulo ha sido eliminado");
         return redirect()->route('discos.index');
     }
+
 }

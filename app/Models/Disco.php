@@ -12,7 +12,23 @@ class Disco extends Model
 
     public $fillable=["titulo","tipo","anio", "artista","cover_image"];
 
-    public function generos(){
+    public function genero()
+    {
         return $this->hasMany(Genero::class);
     }
+
+    public function getGénerosFormattedAttribute()
+    {
+        if ($this->genero && $this->genero->isNotEmpty()) {
+            return $this->genero->map(function ($genero) {
+                return [
+                    'genero' => $genero->genero,
+                    'subgenero' => $genero->subgenero ?? 'No tiene subgénero',
+                ];
+            });
+        }
+
+        return [];
+    }
+
 }
