@@ -132,4 +132,10 @@ class DiscoController extends Controller
         return redirect()->route('discos.index');
     }
 
+    public function novedades()
+    {
+        $discos = Disco::latest()->take(12)->get();
+        return view('discos.novedades', compact('discos'));
+    }
+
 }
