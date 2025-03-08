@@ -10,8 +10,8 @@
         @endif
 
         <div class="p-4 bg-gray-200 flex space-x-4">
-            <a class="btn btn-primary text-lg" href="{{route("discos.create")}}">Nuevo Disco</a>
-            <a class="btn btn-secondary text-lg" href="{{ route("home") }}">Volver</a>
+            <a class="btn btn-primary text-lg" href="{{route("discos.create")}}">{{__('Nuevo Disco')}}</a>
+            <a class="btn btn-secondary text-lg" href="{{ route("home") }}">{{__('Volver')}}</a>
         </div>
 
         <!-- Tabla con los discos -->
@@ -20,10 +20,10 @@
                 <thead class="bg-indigo-400 text-xl font-bold">
                 <tr>
                     @foreach($campos as $campo)
-                        <th class="border border-gray-400 p-2">{{$campo}}</th>
+                        <th class="border border-gray-400 p-2">{{ $campos_titulos[$campo] ?? ucfirst($campo) }}</th>
                     @endforeach
-                    <th class="border border-gray-400 p-2">Editar</th>
-                    <th class="border border-gray-400 p-2">Acciones</th>
+                    <th class="border border-gray-400 p-2">{{__('Editar')}}</th>
+                    <th class="border border-gray-400 p-2">{{__('Acciones')}}</th>
                 </tr>
                 </thead>
                 <tbody class="bg-white">
@@ -62,8 +62,8 @@
 <script>
     function confirmDelete (id){
         swal({
-            title:"¿Confirmar borrado?",
-            text:"Esta acción no se puede deshacer",
+            title:"{{__('¿Confirmar borrado?')}}",
+            text:"{{__('Esta acción no se puede deshacer')}}",
             icon: "warning",
             buttons:true
         }).then(function (ok){
@@ -83,8 +83,8 @@
 
     function confirmEdit(id) {
         swal({
-            title: "¿Seguro que quiere editar?",
-            text: "Va a editar un disco en la BBDD, esta acción no se puede deshacer",
+            title: "{{__('¿Seguro que quiere editar?')}}",
+            text: "{{__('Va a editar un disco en la BBDD, esta acción no se puede deshacer')}}",
             icon: "warning",
             buttons: true
         }).then(function (ok) {

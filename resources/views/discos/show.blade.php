@@ -1,8 +1,8 @@
 <x-layouts.layout titulo="Overtune - {{ $disco->titulo }}">
 
-<div class="text-center mb-6 mt-12 mx-8">
-        <h1 class="text-4xl font-bold text-violet-900">Detalles del Disco</h1>
-        <p class="text-xl text-gray-600">Información del disco: <strong>{{$disco->id}}</strong></p>
+    <div class="text-center mb-6 mt-12 mx-8">
+        <h1 class="text-4xl font-bold text-violet-900">{{__('Detalles del Disco')}}</h1>
+        <p class="text-xl text-gray-600">{{__('Información del disco: ')}}<strong>{{$disco->id}}</strong></p>
     </div>
 
     <!-- Sección de la imagen de portada del disco -->
@@ -13,15 +13,15 @@
     <!-- Detalles adicionales del disco (Artista, Año, Título) debajo de la imagen -->
     <div class="text-center mb-6 mx-8">
         <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{$disco->titulo}}</h3>
-        <p><strong>Artista:</strong> {{$disco->artista}}</p>
-        <p><strong>Año de lanzamiento:</strong> {{$disco->anio}}</p>
-        <p><strong>Tipo:</strong> {{$disco->tipo}}</p>
+        <p><strong>{{__('Artista:')}}</strong> {{$disco->artista}}</p>
+        <p><strong>{{__('Año de lanzamiento:')}}</strong> {{$disco->anio}}</p>
+        <p><strong>{{__('Tipo:')}}</strong> {{$disco->tipo}}</p>
     </div>
 
     <!-- Comprobamos en caso de que no haya géneros asociados -->
     @if($disco->génerosFormatted)
-        <div class="space-y-4 mx-8">
-            <h2 class="text-3xl font-semibold text-gray-700">Géneros del Disco:</h2>
+        <div class="space-y-4 mx-8 mb-12"> <!-- Añadimos un margen inferior -->
+            <h2 class="text-3xl font-semibold text-gray-700">{{__('Géneros del Disco')}}:</h2>
             @foreach($disco->génerosFormatted as $genero)
                 <div class="flex items-center justify-between p-4 border border-gray-300 rounded-lg shadow-sm bg-gray-50 mb-4">
                     <div class="flex flex-col">
@@ -33,7 +33,7 @@
         </div>
     @else
         <div class="text-center p-4 bg-pink-100 border border-pink-400 rounded-lg mx-8 mb-6">
-            <p class="text-lg font-semibold text-pink-800">No hay géneros asociados con este disco.</p>
+            <p class="text-lg font-semibold text-pink-800">{{__('No hay géneros asociados con este disco.')}}</p>
         </div>
     @endif
 

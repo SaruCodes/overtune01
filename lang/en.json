@@ -112,5 +112,12 @@
     "Únete a Nuestra Comunidad": "Join Our Community",
     "Comparte reseñas y descubre música con otros usuarios.": "Share reviews and discover music with other users.",
     "Gestion de biblioteca de Música": "Music Library Management",
-    "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales": "We manage the creation, deletion, updates, and removal of a music album database."
+    "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales": "We manage the creation, deletion, updates, and removal of a music album database.",
+    "Detalles del Disco": "Album Details",
+    "Información del disco: ": "Album Information: ",
+    "Artista:": "Artist:",
+    "Año de lanzamiento:": "Release Year:",
+    "Tipo:": "Type:",
+    "Géneros del Disco:": "Album Genres:",
+    "No hay géneros asociados con este disco.": "No genres associated with this album."
 }

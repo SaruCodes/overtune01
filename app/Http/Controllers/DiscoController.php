@@ -17,23 +17,31 @@ class DiscoController extends Controller
      */
     public function index(Request $request)
     {
-
         $generos = Genero::all();
-
         $campos = Schema::getColumnListing('discos');
         $exclude = ["created_at", "updated_at"];
         $campos = array_diff($campos, $exclude);
 
+        // Títulos personalizados para las columnas
+        $campos_titulos = [
+            'titulo' => 'Título',
+            'tipo' => 'Tipo de Formato',
+            'anio' => 'Año de Publicación',
+            'artista' => 'Artista o Grupo',
+            'cover_image' => 'Imagen de Portada'
+        ];
+
         $query = Disco::select($campos);
 
-        // Si hay un género seleccionado, filtramos los discos por ese género
+        // Filtrando por género si se selecciona
         if ($request->has('genero_id') && $request->genero_id != '') {
             $query->where('genero_id', $request->genero_id);
         }
 
         $filas = $query->get();
-        return view('discos.index', compact('filas', 'campos', 'generos'));
+        return view('discos.index', compact('filas', 'campos', 'generos', 'campos_titulos'));
     }
+
 
     /**
      * Show the form for creating a new resource.

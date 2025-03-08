@@ -112,5 +112,13 @@
     "Únete a Nuestra Comunidad": "Tritt unserer Gemeinschaft bei",
     "Comparte reseñas y descubre música con otros usuarios.": "Teile Bewertungen und entdecke Musik mit anderen Nutzern.",
     "Gestion de biblioteca de Música": "Musikbibliotheksverwaltung",
-    "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales": "Wir verwalten die Erstellung, Löschung, Aktualisierung und Entfernung einer Musikalbum-Datenbank."
+    "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales": "Wir verwalten die Erstellung, Löschung, Aktualisierung und Entfernung einer Musikalbum-Datenbank.",
+    "Detalles del Disco": "Details des Albums",
+    "Información del disco: ": "Albuminformationen: ",
+    "Artista:": "Künstler:",
+    "Año de lanzamiento:": "Erscheinungsjahr:",
+    "Tipo:": "Typ:",
+    "Géneros del Disco:": "Genres des Albums:",
+    "No hay géneros asociados con este disco.": "Es gibt keine Genres, die diesem Album zugeordnet sind."
+}
 }
