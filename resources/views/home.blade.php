@@ -1,33 +1,56 @@
 <x-layouts.layout titulo="Overtune - Home">
-    <div
-        class="hero min-h-[80vh]"
-        style="background-image: url('{{ asset('images/fondo_home.jpg') }}');">
-        <div class="hero-overlay bg-opacity-60"></div>
-        <div class="hero-content text-neutral-content text-center">
-            <div class="max-w-md">
-                <h1 class="mb-5 text-5xl font-bold">Overtune</h1>
-                <p class="mb-5 white">
-                    {{ __('La web para fanáticos de la música. Puntúa, reseña y guarda tus lanzamientos musicales favoritos')}}
-                </p>
+    <div class="relative w-full">
+        <div class="carousel w-full">
+            <div id="slide1" class="carousel-item relative w-full">
+                <img src="{{ asset('images/fondo_home.jpg') }}" class="w-full h-[80vh] object-cover" />
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-center p-8">
+                    <h1 class="text-5xl font-bold">Overtune</h1>
+                    <p class="text-lg mt-4">{{ __('La web para fanáticos de la música. Puntúa, reseña y guarda tus lanzamientos musicales favoritos') }}</p>
+                </div>
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href="#slide3" class="btn btn-circle">❮</a>
+                    <a href="#slide2" class="btn btn-circle">❯</a>
+                </div>
+            </div>
+            <div id="slide2" class="carousel-item relative w-full">
+                <img src="{{ asset('images/fondo_home2.jpg') }}" class="w-full h-[80vh] object-cover" />
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-center p-8">
+                    <h1 class="text-5xl font-bold">{{__('Explora Nuevas Canciones')}}</h1>
+                    <p class="text-lg mt-4">{{ __('Descubre y guarda tus álbumes favoritos con facilidad.') }}</p>
+                </div>
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href="#slide1" class="btn btn-circle">❮</a>
+                    <a href="#slide3" class="btn btn-circle">❯</a>
+                </div>
+            </div>
+            <div id="slide3" class="carousel-item relative w-full">
+                <img src="{{ asset('images/fondo_home3.jpg') }}" class="w-full h-[80vh] object-cover" />
+                <div class="absolute inset-0 flex flex-col items-center justify-center bg-black bg-opacity-50 text-white text-center p-8">
+                    <h1 class="text-5xl font-bold">{{__('Únete a Nuestra Comunidad')}}</h1>
+                    <p class="text-lg mt-4">{{ __('Comparte reseñas y descubre música con otros usuarios.') }}</p>
+                </div>
+                <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                    <a href="#slide2" class="btn btn-circle">❮</a>
+                    <a href="#slide1" class="btn btn-circle">❯</a>
+                </div>
             </div>
         </div>
     </div>
+
     <section class="p-8 bg-gray-100">
-        <h2 class="text-3xl font-semibold text-center mb-8">{{ __('Los 3 Mejores Álbumes') }}</h2>
+        <h2 class="text-3xl font-semibold text-center mb-8">{{ __('Últimos 3 Álbumes Introducidos') }}</h2>
         <div class="flex justify-center gap-6">
-            <!-- Aquí mostramos los discos -->
-            @foreach ($discos as $disco) <!-- Usamos $discos, que es lo que pasamos desde el controlador -->
-            <div class="card w-60 shadow-xl">
-                <figure>
-                    <!-- Verifica si tiene imagen o usa la imagen predeterminada -->
-                    <img class="w-full h-40 object-cover" src="{{ $disco->cover_image ? asset('storage/' . $disco->cover_image) : 'https://via.placeholder.com/200' }}" alt="{{ $disco->titulo }}" />
-                </figure>
-                <div class="card-body">
-                    <h3 class="card-title">{{ $disco->titulo }}</h3>
-                    <p>{{ __('Artista: ') }}{{ $disco->artista }}</p>
-                    <p>Calificación: 4.8/5</p>
+            @foreach ($discos->sortByDesc('created_at')->take(3) as $disco)
+                <div class="card w-60 shadow-xl">
+                    <figure>
+                        <img class="w-full h-40 object-cover" src="{{ $disco->cover_image ? asset('storage/' . $disco->cover_image) : 'https://via.placeholder.com/200' }}" alt="{{ $disco->titulo }}" />
+                    </figure>
+                    <div class="card-body">
+                        <h3 class="card-title">{{ $disco->titulo }}</h3>
+                        <p>{{ __('Artista: ') }}{{ $disco->artista }}</p>
+                        <p>Calificación: 4.8/5</p>
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </section>

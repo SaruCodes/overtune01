@@ -6,7 +6,7 @@
 
         <!-- Contenedor del formulario -->
         <div class="relative bg-white bg-opacity-90 rounded-2xl p-6 shadow-lg w-full max-w-md">
-            <h1 class="text-violet-900 font-bold text-2xl text-center">¡Únete a Overtune!</h1>
+            <h1 class="text-violet-900 font-bold text-2xl text-center">{{__('¡Únete a Overtune!')}}</h1>
             <form method="POST" action="{{ route('register') }}">
                 @csrf
 

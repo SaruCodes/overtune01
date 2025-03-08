@@ -5,7 +5,7 @@
 
         <!-- Contenedor del formulario -->
         <div class="relative bg-white bg-opacity-90 rounded-2xl p-6 shadow-lg w-full max-w-md">
-            <h1 class="text-violet-900 font-bold text-2xl text-center">¡Únete a Overtune!</h1>
+            <h1 class="text-violet-900 font-bold text-2xl text-center">{{__('Acceso a Overtune')}}</h1>
             <x-auth-session-status class="mb-4" :status="session('status')" />
 
             <form method="POST" action="{{ route('login') }}">
@@ -13,14 +13,14 @@
 
                 <!-- Email Address -->
                 <div>
-                    <x-input-label for="email" :value="__('Email')" class="text-gray-800 font-bold" /> <!-- Changed to text-gray-800 -->
+                    <x-input-label for="email" :value="__('Nombre')" class="text-gray-800 font-bold" /> <!-- Changed to text-gray-800 -->
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!-- Password -->
                 <div class="mt-4">
-                    <x-input-label for="password" :value="__('Password')" class="text-gray-800 font-bold" /> <!-- Changed to text-gray-800 -->
+                    <x-input-label for="password" :value="__('Contraseña')" class="text-gray-800 font-bold" /> <!-- Changed to text-gray-800 -->
                     <x-text-input id="password" class="block mt-1 w-full"
                                   type="password"
                                   name="password"

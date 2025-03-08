@@ -99,5 +99,12 @@
     "Acceso": "Access",
     "Registro": "Register",
     "Cerrar sesión": "Logout",
-    "Todos los derechos reservados": "All rights reserved"
+    "Todos los derechos reservados": "All rights reserved",
+    "¡Únete a Overtune!": "Join Overtune!",
+    "Nombre": "Name",
+    "Correo Electrónico": "Email",
+    "Contraseña": "Password",
+    "Confirmar Contraseña": "Confirm Password",
+    "¿Ya tienes cuenta? Inicia sesión": "Already have an account? Log in",
+    "Registrarse": "Register"
 }

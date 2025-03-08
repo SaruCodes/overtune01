@@ -15,7 +15,7 @@
                     <div class="mt-4">
                         <h2 class="text-xl font-semibold">{{ $disco->titulo }}</h2>
                         <p class="text-gray-600">{{ $disco->artista }}</p>
-                        <p class="text-sm text-gray-500">Publicado el {{ $disco->anio }}</p>
+                        <p class="text-sm text-gray-500">{{__('Publicado el ')}}{{ $disco->anio }}</p>
                     </div>
                 </div>
             @endforeach
