@@ -4,7 +4,7 @@
         <form action="{{ route('discos.store') }}" method="POST" class="w-full max-w-4xl bg-white shadow-lg rounded-lg p-8" enctype="multipart/form-data">
             @csrf
 
-            <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Nuevo Disco</h1>
+            <h1 class="text-2xl font-semibold text-violet-800 mb-6 text-center">Nuevo Disco</h1>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Columna de Datos -->

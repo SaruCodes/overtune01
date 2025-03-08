@@ -1,6 +1,6 @@
-<x-layouts.layout>
-    <!-- Título principal con margen superior más grande y márgenes laterales amplios -->
-    <div class="text-center mb-6 mt-12 mx-8">
+<x-layouts.layout titulo="Overtune - {{ $disco->titulo }}">
+
+<div class="text-center mb-6 mt-12 mx-8">
         <h1 class="text-4xl font-bold text-violet-900">Detalles del Disco</h1>
         <p class="text-xl text-gray-600">Información del disco: <strong>{{$disco->id}}</strong></p>
     </div>
@@ -15,6 +15,7 @@
         <h3 class="text-2xl font-semibold text-gray-800 mb-2">{{$disco->titulo}}</h3>
         <p><strong>Artista:</strong> {{$disco->artista}}</p>
         <p><strong>Año de lanzamiento:</strong> {{$disco->anio}}</p>
+        <p><strong>Tipo:</strong> {{$disco->tipo}}</p>
     </div>
 
     <!-- Comprobamos en caso de que no haya géneros asociados -->
@@ -33,14 +34,6 @@
     @else
         <div class="text-center p-4 bg-pink-100 border border-pink-400 rounded-lg mx-8 mb-6">
             <p class="text-lg font-semibold text-pink-800">No hay géneros asociados con este disco.</p>
-        </div>
-    @endif
-
-    <!-- Información adicional del disco (Tipo de disco) -->
-    @if($disco->tipo)
-        <div class="mx-8 mt-6">
-            <h3 class="text-2xl font-semibold text-gray-800 mb-2">Tipo de Disco:</h3>
-            <p>{{$disco->tipo}}</p>
         </div>
     @endif
 

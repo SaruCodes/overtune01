@@ -14,19 +14,6 @@
             <a class="btn btn-secondary text-lg" href="{{ route("home") }}">Volver</a>
         </div>
 
-        <!-- Formulario de filtro por género -->
-        <form action="{{ route('discos.index') }}" method="GET" class="flex justify-end space-x-4 p-4">
-            <select name="genero_id" id="genero_id" class="p-2 border border-gray-300 rounded">
-                <option value="">Seleccionar Género</option>
-                @foreach($generos as $genero)
-                    <option value="{{ $genero->id }}" {{ request('genero_id') == $genero->id ? 'selected' : '' }}>
-                        {{ $genero->nombre }}
-                    </option>
-                @endforeach
-            </select>
-            <button type="submit" class="btn btn-primary">Filtrar</button>
-        </form>
-
         <!-- Tabla con los discos -->
         <div class="max-h-full overflow-x-auto p-4 flex-grow">
             <table class="table-auto w-full border-collapse border border-gray-300 text-base text-gray-800">

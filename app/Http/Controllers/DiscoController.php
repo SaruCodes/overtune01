@@ -100,8 +100,10 @@ class DiscoController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Disco $disco)
+// En el controlador DiscoController
+    public function edit($id)
     {
+        $disco = Disco::with('genero')->findOrFail($id);
         return view('discos.edit', compact('disco'));
     }
 
@@ -124,9 +126,31 @@ class DiscoController extends Controller
 
         // Actualizamos el disco
         $disco->update($request->except('cover_image'));
+
+        // Actualizamos los géneros asociados al disco
+        // Primero, eliminamos los géneros existentes
+        $disco->genero()->delete();
+
+        // Luego, agregamos los nuevos géneros
+        if ($request->has('generos')) {
+            foreach ($request->generos as $genero_disco) {
+                // Creamos una nueva instancia de Genero para cada género
+                $genero = new Genero();
+                $genero->disco_id = $disco->id;
+                $genero->genero = $genero_disco;
+                $genero->subgenero = $request->subgenero[$genero_disco] ?? null;
+
+                $genero->save();
+            }
+        }
+
+        // Mensaje de éxito
         session()->flash("mensaje", "Disco $disco->titulo actualizado");
+
+        // Redirigimos a la vista de listado de discos
         return redirect()->route('discos.index');
     }
+
 
     /**
      * Remove the specified resource from storage.
