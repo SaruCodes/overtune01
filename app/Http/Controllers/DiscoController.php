@@ -20,7 +20,6 @@ class DiscoController extends Controller
         $exclude = ["created_at", "updated_at"];
         $campos = array_diff($campos, $exclude);
         $filas = Disco::select($campos)->get();
-        // Select todos los atributos de discos
         return view('discos.index', compact('filas', "campos"));
     }
 
@@ -37,25 +36,31 @@ class DiscoController extends Controller
      */
     public function store(StoreDiscoRequest $request)
     {
+        // Obtenemos solo los datos necesarios
         $datos = $request->only("titulo","tipo","anio","artista","cover_image");
-        $disco = new Disco($datos);
-        $disco->save();
 
-        if ($request->has("discos")){
-            foreach ($request->generos as $genero_disco){
+        // Creamos el objeto disco con los datos proporcionados
+        $disco = new Disco($datos);
+        $disco->save();  // Guardamos el disco
+
+        // Verificamos si se han enviado géneros
+        if ($request->has("generos")) {
+            foreach ($request->generos as $genero_disco) {
+                // Creamos una nueva instancia de Genero para cada género
                 $genero = new Genero();
-                $genero->disco_id= $disco->id;
+                $genero->disco_id = $disco->id;
                 $genero->genero = $genero_disco;
-                $genero->nivel = $request->subgenero[$genero_disco];
-                $disco->save();
+                $genero->subgenero = $request->subgenero[$genero_disco] ?? null;
+
+                $genero->save();
             }
         }
 
-        $genero->save();
-        session()->flash("mensaje","Disco $genero->titulo registrado");
+        // Mensaje de éxito
+        session()->flash("mensaje", "Disco $disco->titulo registrado");
 
+        // Redirigimos a la vista de listado de discos
         return redirect()->route('discos.index');
-        //
     }
 
     /**
@@ -79,25 +84,24 @@ class DiscoController extends Controller
      */
     public function update(UpdateDiscoRequest $request, Disco $disco)
     {
-        $datos = $request->validated();  // Usar validated() en lugar de input(), ya que UpdateDiscoRequest ya valida los datos
-
-        // Manejo de la imagen
+        // Verificar si hay una nueva imagen de portada y guardarla
         if ($request->hasFile('cover_image')) {
-            // Eliminar la imagen antigua si existe
-            if ($disco->cover_image && Storage::exists('public/' . $disco->cover_image)) {
-                Storage::delete('public/' . $disco->cover_image);
+            // Eliminar la imagen anterior si existe
+            if ($disco->cover_image && $disco->cover_image !== 'images/discos/placeholder.jpg') {
+                Storage::delete('public/' . $disco->cover_image); // Esto elimina la imagen vieja
             }
 
-            // Subir la nueva imagen
-            $imagen = $request->file('cover_image');
-            $imagenNombre = $imagen->store('images/discos', 'public');
-            $datos['cover_image'] = $imagenNombre;
+            // Subir la nueva imagen a la carpeta 'images/discos'
+            $coverImagePath = $request->file('cover_image')->store('images/discos', 'public');
+            $disco->cover_image = $coverImagePath;  // Asignar la ruta a la columna
         }
 
-        $disco->update($datos);
-        session()->flash("mensaje", "El $disco->tipo titulado $disco->titulo fue actualizado correctamente.");
+
+        $disco->update($request->except('cover_image'));
+        session()->flash("mensaje", "Disco $disco->titulo actualizado");
         return redirect()->route('discos.index');
     }
+
 
 
     /**
@@ -105,29 +109,8 @@ class DiscoController extends Controller
      */
     public function destroy(Disco $disco)
     {
-        // Eliminar la imagen asociada
-        if ($disco->cover_image && Storage::exists('public/' . $disco->cover_image)) {
-            Storage::delete('public/' . $disco->cover_image);
-        }
-
         $disco->delete();
         session()->flash("mensaje", "El $disco->tipo titulado $disco->titulo ha sido eliminado");
         return redirect()->route('discos.index');
     }
-
-    public function generos()
-    {
-        return $this->hasMany(Genero::class);
-    }
-
-
-    /**
-     * Saca los últimos discos añadidos a la web en la página de novedades.
-     */
-    public function novedades()
-    {
-        $discos = Disco::latest()->take(12)->get();
-        return view('discos.novedades', compact('discos'));
-    }
 }
-

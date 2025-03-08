@@ -23,20 +23,19 @@ class StoreDiscoRequest extends FormRequest
     {
 
         return [
-            'titulo'      => 'required|string|unique:discos,titulo',
-            'tipo'        => 'required|string',
-            'anio'         => 'required|integer|min:1950|max:' . date('Y'),
-            'artista'     => 'required|string',
-            'cover_image' => 'nullable|image|max:2048',
+            'titulo' => 'required|string|max:255|unique:discos',
+            'tipo' => 'required|string',
+            'anio' => 'required|integer|min:1950|max:' . date('Y'),
+            'artista' => 'required|string|max:255',
+            'cover_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ];
     }
-
-    public function store(StoreDiscoRequest $request)
+    public function messages(): array
     {
-        dd($request->all());
-        // ...
+        return [
+            "titulo.required" => "El titulo es requerido",
+        ];
     }
-
-
-
 }
+
+

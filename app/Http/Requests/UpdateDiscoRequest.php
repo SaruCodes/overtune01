@@ -22,7 +22,12 @@ class UpdateDiscoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'titulo'      => 'required|string|unique:discos,titulo,' . $this->route('disco')->id,
+            'tipo'        => 'required|string|in:Album,EP,Single',
+            'anio'        => 'required|integer|min:1950|max:' . date('Y'),
+            'artista'     => 'required|string',
+            'cover_image' => 'nullable|image|max:2048',
         ];
     }
+
 }

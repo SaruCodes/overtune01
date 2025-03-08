@@ -5,23 +5,18 @@
             <form action="{{ route('discos.update', $disco->id) }}" method="POST" enctype="multipart/form-data">
                 @method('PUT')
                 @csrf
-                <div class="space-y-4">
-                    <!-- Nombre -->
+
+                <h1 class="text-2xl font-semibold text-gray-800 mb-6 text-center">Editar Disco</h1>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Título del Disco -->
                     <div>
-                        <x-input-label for="titulo" value="Nombre del Disco" />
-                        <x-text-input
-                            id="titulo"
-                            name="titulo"
-                            class="block mt-1 w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
-                            type="text"
-                            value="{{ old('titulo', $disco->titulo) }}"
-                            required
-                        />
+                        <x-input-label for="titulo" value="Título" />
+                        <x-text-input id="titulo" class="block mt-1 w-full" type="text" name="titulo" value="{{ old('titulo', $disco->titulo) }}" />
                         @error("titulo")
                         <div class="text-sm text-red-600 mt-1">{{ $message }}</div>
                         @enderror
                     </div>
-
                     <!-- Tipo de Formato -->
                     <div>
                         <x-input-label for="tipo" value="Tipo de Formato" />
@@ -88,18 +83,11 @@
                         @enderror
                     </div>
                 </div>
-
-                <div class="flex justify-between items-center mt-6">
-                    <button
-                        class="btn btn-primary py-2 px-6 bg-indigo-600 text-white rounded-md hover:bg-indigo-700"
-                        type="submit"
-                    >
+                <div class="flex justify-end space-x-4 mt-8">
+                    <button type="submit" class="btn btn-sm btn-success px-6 py-2 bg-green-600 text-white rounded-md shadow-md hover:bg-green-700 focus:outline-none">
                         Guardar Cambios
                     </button>
-                    <a
-                        href="{{ route('discos.index') }}"
-                        class="btn btn-secondary py-2 px-6 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
-                    >
+                    <a href="{{ route('discos.index') }}" class="btn btn-sm btn-secondary px-6 py-2 bg-gray-600 text-white rounded-md shadow-md hover:bg-gray-700 focus:outline-none">
                         Cancelar
                     </a>
                 </div>

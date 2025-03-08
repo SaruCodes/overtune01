@@ -10,10 +10,9 @@ Route::resource('discos', DiscoController::class)
     ->middleware('auth');
 
 Route::get("lang/{language}", LanguageController::class)->name('language');
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 Route::get('/novedades', [DiscoController::class, 'novedades'])->name('novedades');
+
 
 
 Route::get('/dashboard', function () {

@@ -10,7 +10,7 @@ class Disco extends Model
     /** @use HasFactory<\Database\Factories\DiscoFactory> */
     use HasFactory;
 
-    public $fillable=["nombre","dni","email", "f_nac"];
+    public $fillable=["titulo","tipo","anio", "artista","cover_image"];
 
     public function generos(){
         return $this->hasMany(Genero::class);
