@@ -21,7 +21,7 @@
                 @guest
                     <details class="relative flex items-center z-50">
                         <summary class="btn btn-outline btn-primary">{{ __('Acceso') }}</summary>
-                        <ul class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 w-48 bg-violet-900 text-white rounded-md shadow-lg p-2 z-50 max-w-full">
+                        <ul class="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 max-w-[80vw] w-auto bg-violet-900 text-white rounded-md shadow-lg p-2 z-50">
                             <li><a class="block px-4 py-2 hover:bg-violet-800 rounded-md" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                             <li><a class="block px-4 py-2 hover:bg-violet-800 rounded-md" href="{{ route('register') }}">{{ __('Registro') }}</a></li>
                         </ul>

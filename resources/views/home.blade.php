@@ -49,7 +49,7 @@
                     <div class="card-body">
                         <h3 class="card-title">{{ $disco->titulo }}</h3>
                         <p>{{ __('Artista: ') }}{{ $disco->artista }}</p>
-                        <p>Calificación: 4.8/5</p>
+                        <p>{{ __('Calificación: ')}} 4.8/5</p>
                     </div>
                 </div>
             @endforeach

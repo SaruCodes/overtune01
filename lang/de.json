@@ -87,7 +87,6 @@
     "La web para fanáticos de la música. Puntúa, reseña y guarda tus lanzamientos musicales favoritos": "Die Website für Musikfans. Bewerten, rezensieren und speichern Sie Ihre Lieblingsmusikveröffentlichungen.",
     "Los 3 Mejores Álbumes": "Die 3 Besten Alben",
     "Bienvenido a Overtune": "Willkommen bei Overtune",
-    "Explora nuestras funcionalidades para gestionar discos, álbumes y artistas. Conoce la mejor forma de interactuar con la plataforma.": "Entdecken Sie unsere Funktionen zur Verwaltung von Schallplatten, Alben und Künstlern. Finden Sie die beste Möglichkeit, mit der Plattform zu interagieren.",
     "Registrarse Ahora": "Jetzt Registrieren",
     "Gestión de biblioteca de Música": "Musikbibliotheksverwaltung",
     "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de álbumes musicales": "Wir verwalten das Erstellen, Löschen, Aktualisieren und Entfernen einer Musikalbum-Datenbank.",
@@ -143,6 +142,10 @@
     "Información del disco:": "Albuminformationen:",
     "Géneros del Disco": "Albumgenres",
     "Año": "Jahr",
-    "Publicado en": "Veröffentlicht"
+    "Publicado en ": "Veröffentlicht",
+    "Últimos Lanzamientos":"Neueste Veröffentlichungen",
+    "Explora nuestras funcionalidades para gestionar discos, álbumes y artistas. Conoce la mejor forma de interactuar con la plataforma.": "Entdecken Sie unsere Funktionen zur Verwaltung von Alben, Alben und Künstlern. Erfahren Sie die beste Art, mit der Plattform zu interagieren.",
+    "Calificación: ": "Bewertung:",
+    "Artista: ": "Künstler:"
 }
 

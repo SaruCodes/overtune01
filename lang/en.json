@@ -87,7 +87,6 @@
     "La web para fanáticos de la música. Puntúa, reseña y guarda tus lanzamientos musicales favoritos": "The website for music fans. Rate, review, and save your favorite music releases.",
     "Los 3 Mejores Álbumes": "The 3 Best Albums",
     "Bienvenido a Overtune": "Welcome to Overtune",
-    "Explora nuestras funcionalidades para gestionar discos, álbumes y artistas. Conoce la mejor forma de interactuar con la plataforma.": "Explore our features to manage records, albums, and artists. Discover the best way to interact with the platform.",
     "Registrarse Ahora": "Sign Up Now",
     "Gestión de biblioteca de Música": "Music Library Management",
     "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de álbumes musicales": "We manage the creation, deletion, updates, and removal of a music album database.",
@@ -115,7 +114,6 @@
     "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de albumes musicales": "We manage the creation, deletion, updates, and removal of a music album database.",
     "Detalles del Disco": "Album Details",
     "Información del disco: ": "Album Information: ",
-    "Artista:": "Artist:",
     "Año de lanzamiento:": "Release Year:",
     "Tipo:": "Type:",
     "Géneros del Disco:": "Album Genres:",
@@ -144,5 +142,9 @@
     "Géneros del Disco": "Album Genres",
     "Año": "Year",
     "Guardar": "Save",
-    "Publicado en ": "Published in "
+    "Publicado en ": "Published in ",
+    "Últimos Lanzamientos":"Latest Releases",
+    "Explora nuestras funcionalidades para gestionar discos, álbumes y artistas. Conoce la mejor forma de interactuar con la plataforma.": "Explore our features for managing albums, albums, and artists. Learn the best way to interact with the platform.",
+    "Calificación: ": "Rating:",
+    "Artista: ": "Artist:"
 }

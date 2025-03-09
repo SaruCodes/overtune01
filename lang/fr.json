@@ -87,7 +87,6 @@
     "La web para fanáticos de la música. Puntúa, reseña y guarda tus lanzamientos musicales favoritos": "Le site web pour les fans de musique. Notez, critiquez et enregistrez vos sorties musicales préférées.",
     "Los 3 Mejores Álbumes": "Les 3 Meilleurs Albums",
     "Bienvenido a Overtune": "Bienvenue sur Overtune",
-    "Explora nuestras funcionalidades para gestionar discos, álbumes y artistas. Conoce la mejor forma de interactuar con la plataforma.": "Explorez nos fonctionnalités pour gérer les disques, albums et artistes. Découvrez la meilleure façon d'interagir avec la plateforme.",
     "Registrarse Ahora": "S'inscrire Maintenant",
     "Gestión de biblioteca de Música": "Gestion de la Bibliothèque Musicale",
     "Gestionamos altas, bajas, actualizaciones y borrado de una tabla de álbumes musicales": "Nous gérons l'ajout, la suppression, la mise à jour et la suppression d'une base de données d'albums musicaux.",
@@ -146,5 +145,9 @@
     "Géneros del Disco": "Genres de l'album",
     "Año": "Année",
     "Guardar": "Enregistrer",
-    "Publicado en": "Publié"
+    "Publicado en ": "Publié",
+    "Últimos Lanzamientos":"Dernières Sorties",
+    "Explora nuestras funcionalidades para gestionar discos, álbumes y artistas. Conoce la mejor forma de interactuar con la plataforma.": "Explorez nos fonctionnalités pour gérer des albums, des disques et des artistes. Découvrez la meilleure façon d'interagir avec la plateforme.",
+    "Calificación: ": "Évaluation:",
+    "Artista: ": "Artiste:"
 }
