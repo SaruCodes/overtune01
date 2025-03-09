@@ -1,4 +1,4 @@
-<x-layouts.layout titulo="Overtune - {{ $disco->titulo }}">
+<x-layouts.layout titulo="{{__('Overtune - ')}}{{ $disco->titulo }}">
 
     <div class="text-center mb-6 mt-12 mx-8">
         <h1 class="text-4xl font-bold text-violet-900">{{__('Detalles del Disco')}}</h1>

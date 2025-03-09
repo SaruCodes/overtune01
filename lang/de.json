@@ -119,6 +119,30 @@
     "Año de lanzamiento:": "Erscheinungsjahr:",
     "Tipo:": "Typ:",
     "Géneros del Disco:": "Genres des Albums:",
-    "No hay géneros asociados con este disco.": "Es gibt keine Genres, die diesem Album zugeordnet sind."
+    "No hay géneros asociados con este disco.": "Es gibt keine Genres, die diesem Album zugeordnet sind.",
+    "Overtune - Gestión": "Overtune - Verwaltung",
+    "Nuevo Disco": "Neues Album",
+    "Volver": "Zurück",
+    "Elija un género": "Wählen Sie ein Genre",
+    "Filtrar": "Filtern",
+    "Editar": "Bearbeiten",
+    "Acciones": "Aktionen",
+    "¿Confirmar borrado?": "Löschen bestätigen?",
+    "Esta acción no se puede deshacer": "Diese Aktion kann nicht rückgängig gemacht werden",
+    "¿Seguro que quiere editar?": "Sind Sie sicher, dass Sie bearbeiten möchten?",
+    "Va a editar un disco en la BBDD, esta acción no se puede deshacer": "Sie bearbeiten ein Album in der Datenbank, diese Aktion kann nicht rückgängig gemacht werden",
+    "Editar Disco": "Album bearbeiten",
+    "Título": "Titel",
+    "Tipo de Formato": "Formattyp",
+    "Año de Publicación": "Erscheinungsjahr",
+    "Artista o Grupo": "Künstler oder Band",
+    "Imagen de Portada": "Coverbild",
+    "Listado de Géneros": "Genre-Liste",
+    "Guardar Cambios": "Änderungen speichern",
+    "Cancelar": "Abbrechen",
+    "Información del disco:": "Albuminformationen:",
+    "Géneros del Disco": "Albumgenres",
+    "Año": "Jahr",
+    "Publicado en": "Veröffentlicht"
 }
-}
+

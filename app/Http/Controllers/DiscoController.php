@@ -17,12 +17,11 @@ class DiscoController extends Controller
      */
     public function index(Request $request)
     {
-        $generos = Genero::all();
+        $generos = Genero::select('genero')->distinct()->get(); // Obtener los géneros únicos
         $campos = Schema::getColumnListing('discos');
         $exclude = ["created_at", "updated_at"];
         $campos = array_diff($campos, $exclude);
 
-        // Títulos personalizados para las columnas
         $campos_titulos = [
             'titulo' => 'Título',
             'tipo' => 'Tipo de Formato',
@@ -31,16 +30,20 @@ class DiscoController extends Controller
             'cover_image' => 'Imagen de Portada'
         ];
 
-        $query = Disco::select($campos);
+        // Consulta base de discos
+        $query = Disco::with('genero')->select($campos);
 
         // Filtrando por género si se selecciona
-        if ($request->has('genero_id') && $request->genero_id != '') {
-            $query->where('genero_id', $request->genero_id);
+        if ($request->has('genero') && $request->genero != '') {
+            $query->whereHas('genero', function ($q) use ($request) {
+                $q->where('genero', $request->genero);
+            });
         }
 
         $filas = $query->get();
         return view('discos.index', compact('filas', 'campos', 'generos', 'campos_titulos'));
     }
+
 
 
     /**

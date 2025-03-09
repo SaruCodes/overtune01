@@ -1,4 +1,4 @@
-<x-layouts.layout titulo="Overtune - Gestión">
+<x-layouts.layout titulo="{{__('Overtune - Gestión')}}">
     <div class="min-h-screen flex flex-col">
         @if (session("mensaje"))
             <div id="message" role="alert" class="alert alert-success">
@@ -9,12 +9,24 @@
             </div>
         @endif
 
-        <div class="p-4 bg-gray-200 flex space-x-4">
-            <a class="btn btn-primary text-lg" href="{{route("discos.create")}}">{{__('Nuevo Disco')}}</a>
-            <a class="btn btn-secondary text-lg" href="{{ route("home") }}">{{__('Volver')}}</a>
-        </div>
-
-        <!-- Tabla con los discos -->
+            <div class="p-4 bg-gray-200 flex justify-between items-center">
+                <div class="space-x-4">
+                    <a class="btn btn-primary text-lg" href="{{route('discos.create')}}">{{__('Nuevo Disco')}}</a>
+                    <a class="btn btn-secondary text-lg" href="{{ route('home') }}">{{__('Volver')}}</a>
+                </div>
+                <form method="GET" action="{{ route('discos.index') }}" class="flex items-center space-x-2">
+                    <select name="genero" class="select select-secondary bg-white text-gray-800 border border-gray-400">
+                        <option value="">{{ __('Elija un género') }}</option>
+                        @foreach($generos as $genero)
+                            <option value="{{ $genero->genero }}" {{ request('genero') == $genero->genero ? 'selected' : '' }}>
+                                {{ $genero->genero }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <button type="submit" class="btn btn-secondary text-lg">{{__('Filtrar')}}</button>
+                </form>
+            </div>
+            <!-- Tabla con los discos -->
         <div class="max-h-full overflow-x-auto p-4 flex-grow">
             <table class="table-auto w-full border-collapse border border-gray-300 text-base text-gray-800">
                 <thead class="bg-indigo-400 text-xl font-bold">
